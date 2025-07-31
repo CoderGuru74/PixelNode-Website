@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'; // Fixed: changed '=>' to 'from'
+import React, { useState, useEffect } from 'react';
 import {
   Menu,
   X,
@@ -134,19 +134,19 @@ function App() {
   const reviews = [
     {
       name: "Priya Sharma",
-      company: "Innovate Solutions Pvt. Ltd.",
+      // company: "Innovate Solutions Pvt. Ltd.", // Company name hidden
       rating: 5,
       text: "PixelNode transformed our entire digital infrastructure. Their AI solutions increased our efficiency by 300%."
     },
     {
       name: "Rahul Kumar",
-      company: "TechSpark Innovations",
+      // company: "TechSpark Innovations", // Company name hidden
       rating: 5,
       text: "The mobile app they developed exceeded all expectations. Incredible attention to detail and user experience."
     },
     {
       name: "Ananya Singh",
-      company: "Digital Horizons Corp.",
+      // company: "Digital Horizons Corp.", // Company name hidden
       rating: 5,
       text: "Professional, innovative, and results-driven. PixelNode is our go-to partner for all digital projects."
     }
@@ -487,7 +487,7 @@ function App() {
                   <h4 className="font-semibold text-white group-hover:text-cyan-300 group-hover:drop-shadow-glow transition-all duration-300">
                     {review.name}
                   </h4>
-                  <p className="text-gray-400 text-sm">{review.company}</p>
+                  {/* Company name removed */}
                 </div>
               </div>
             ))}
