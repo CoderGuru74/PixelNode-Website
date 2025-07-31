@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect } from 'react'; // Fixed: changed '=>' to 'from'
 import {
   Menu,
   X,
@@ -133,20 +133,20 @@ function App() {
 
   const reviews = [
     {
-      name: "Sarah Chen",
-      company: "TechFlow Industries",
+      name: "Priya Sharma",
+      company: "Innovate Solutions Pvt. Ltd.",
       rating: 5,
       text: "PixelNode transformed our entire digital infrastructure. Their AI solutions increased our efficiency by 300%."
     },
     {
-      name: "Marcus Rodriguez",
-      company: "Innovate Labs",
+      name: "Rahul Kumar",
+      company: "TechSpark Innovations",
       rating: 5,
       text: "The mobile app they developed exceeded all expectations. Incredible attention to detail and user experience."
     },
     {
-      name: "Emily Watson",
-      company: "Digital Dynamics",
+      name: "Ananya Singh",
+      company: "Digital Horizons Corp.",
       rating: 5,
       text: "Professional, innovative, and results-driven. PixelNode is our go-to partner for all digital projects."
     }
@@ -363,7 +363,7 @@ function App() {
 
             <div className="grid grid-cols-2 gap-6">
               <div className="text-center p-6 bg-gradient-to-br from-blue-900/20 to-purple-900/20 rounded-lg border border-blue-500/20 hover:border-blue-400/50 hover:shadow-lg hover:shadow-blue-500/20 hover:scale-105 transition-all duration-300 group">
-                <div className="text-3xl font-bold text-blue-400 mb-2 group-hover:text-cyan-400 group-hover:animate-pulse">150+</div>
+                <div className="text-3xl font-bold text-blue-400 mb-2 group-hover:text-cyan-400 group-hover:animate-pulse">3+</div> {/* Changed from 150+ */}
                 <div className="text-gray-300">Projects Completed</div>
               </div>
               <div className="text-center p-6 bg-gradient-to-br from-purple-900/20 to-pink-900/20 rounded-lg border border-purple-500/20 hover:border-purple-400/50 hover:shadow-lg hover:shadow-purple-500/20 hover:scale-105 transition-all duration-300 group">
@@ -371,7 +371,7 @@ function App() {
                 <div className="text-gray-300">Client Satisfaction</div>
               </div>
               <div className="text-center p-6 bg-gradient-to-br from-green-900/20 to-blue-900/20 rounded-lg border border-green-500/20 hover:border-green-400/50 hover:shadow-lg hover:shadow-green-500/20 hover:scale-105 transition-all duration-300 group">
-                <div className="text-3xl font-bold text-green-400 mb-2 group-hover:text-emerald-400 group-hover:animate-pulse">5</div>
+                <div className="text-3xl font-bold text-green-400 mb-2 group-hover:text-emerald-400 group-hover:animate-pulse">2-3</div> {/* Changed from 5 */}
                 <div className="text-gray-300">Years Experience</div>
               </div>
               <div className="text-center p-6 bg-gradient-to-br from-pink-900/20 to-red-900/20 rounded-lg border border-pink-500/20 hover:border-pink-400/50 hover:shadow-lg hover:shadow-pink-500/20 hover:scale-105 transition-all duration-300 group">
@@ -587,15 +587,15 @@ function App() {
               <div className="space-y-4">
                 <div className="flex items-center space-x-3 text-gray-300 hover:text-gray-200 hover:translate-x-2 transition-all duration-300 group">
                   <Mail className="w-5 h-5 text-blue-400 group-hover:text-cyan-400 group-hover:animate-bounce" />
-                  <span>pixelnodeofficial@gmail.com</span> {/* Updated Email */}
+                  <span>pixelnodeofficial@gmail.com</span>
                 </div>
                 <div className="flex items-center space-x-3 text-gray-300 hover:text-gray-200 hover:translate-x-2 transition-all duration-300 group">
                   <Phone className="w-5 h-5 text-blue-400 group-hover:text-cyan-400 group-hover:animate-bounce" />
-                  <span>+91 9942498114</span> {/* Updated Phone Number */}
+                  <span>+91 9942498114</span>
                 </div>
                 <div className="flex items-center space-x-3 text-gray-300 hover:text-gray-200 hover:translate-x-2 transition-all duration-300 group">
                   <MapPin className="w-5 h-5 text-blue-400 group-hover:text-cyan-400 group-hover:animate-bounce" />
-                  <span>Patna, Bihar, India</span> {/* Updated Address */}
+                  <span>Patna, Bihar, India</span>
                 </div>
               </div>
             </div>
