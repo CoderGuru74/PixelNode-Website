@@ -363,7 +363,7 @@ function App() {
 
             <div className="grid grid-cols-2 gap-6">
               <div className="text-center p-6 bg-gradient-to-br from-blue-900/20 to-purple-900/20 rounded-lg border border-blue-500/20 hover:border-blue-400/50 hover:shadow-lg hover:shadow-blue-500/20 hover:scale-105 transition-all duration-300 group">
-                <div className="text-3xl font-bold text-blue-400 mb-2 group-hover:text-cyan-400 group-hover:animate-pulse">3+</div> {/* Changed from 150+ */}
+                <div className="text-3xl font-bold text-blue-400 mb-2 group-hover:text-cyan-400 group-hover:animate-pulse">30+</div> {/* Changed from 150+ */}
                 <div className="text-gray-300">Projects Completed</div>
               </div>
               <div className="text-center p-6 bg-gradient-to-br from-purple-900/20 to-pink-900/20 rounded-lg border border-purple-500/20 hover:border-purple-400/50 hover:shadow-lg hover:shadow-purple-500/20 hover:scale-105 transition-all duration-300 group">
