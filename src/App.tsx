@@ -4,7 +4,7 @@ import {
   X,
   ArrowRight,
   ChevronDown,
-  Cpu, // Cpu icon is still imported but not used for the logo itself
+  Cpu,
   Smartphone,
   Globe,
   MessageSquare,
@@ -134,19 +134,16 @@ function App() {
   const reviews = [
     {
       name: "Priya Sharma",
-      // company: "Innovate Solutions Pvt. Ltd.", // Company name hidden
       rating: 5,
       text: "PixelNode transformed our entire digital infrastructure. Their AI solutions increased our efficiency by 300%."
     },
     {
       name: "Rahul Kumar",
-      // company: "TechSpark Innovations", // Company name hidden
       rating: 5,
       text: "The mobile app they developed exceeded all expectations. Incredible attention to detail and user experience."
     },
     {
       name: "Ananya Singh",
-      // company: "Digital Horizons Corp.", // Company name hidden
       rating: 5,
       text: "Professional, innovative, and results-driven. PixelNode is our go-to partner for all digital projects."
     }
@@ -179,17 +176,12 @@ function App() {
     <div className="min-h-screen bg-black text-white overflow-hidden">
       {/* Advanced Animated Background */}
       <div className="fixed inset-0 z-0">
-        {/* Dynamic gradient background */}
         <div className="absolute inset-0 bg-gradient-to-br from-blue-900/10 via-black to-purple-900/10 animate-gradient-shift"></div>
-
-        {/* Floating orbs */}
         <div className="absolute inset-0">
           <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-blue-500/5 rounded-full blur-3xl animate-float-slow"></div>
           <div className="absolute top-3/4 right-1/4 w-80 h-80 bg-purple-500/5 rounded-full blur-3xl animate-float-reverse"></div>
           <div className="absolute top-1/2 left-3/4 w-64 h-64 bg-cyan-500/5 rounded-full blur-3xl animate-float-diagonal"></div>
         </div>
-
-        {/* Interactive mouse-following gradient */}
         <div
           className="absolute w-96 h-96 bg-blue-500/3 rounded-full blur-3xl transition-all duration-1000 ease-out pointer-events-none"
           style={{
@@ -197,13 +189,9 @@ function App() {
             top: mousePosition.y - 192,
           }}
         ></div>
-
-        {/* Animated grid pattern */}
         <div className="absolute inset-0 opacity-5">
           <div className="absolute inset-0 bg-[linear-gradient(rgba(59,130,246,0.1)_1px,transparent_1px),linear-gradient(90deg,rgba(59,130,246,0.1)_1px,transparent_1px)] bg-[size:50px_50px] animate-grid-move"></div>
         </div>
-
-        {/* Floating particles */}
         {particles.map(particle => (
           <div
             key={particle.id}
@@ -217,8 +205,6 @@ function App() {
             }}
           ></div>
         ))}
-
-        {/* Radial gradients with animation */}
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_20%_80%,_rgba(59,130,246,0.15)_0%,_transparent_50%)] animate-pulse-slow"></div>
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_80%_20%,_rgba(147,51,234,0.15)_0%,_transparent_50%)] animate-pulse-slower"></div>
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,_rgba(6,182,212,0.1)_0%,_transparent_70%)] animate-pulse-slowest"></div>
@@ -228,10 +214,9 @@ function App() {
       <header className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${isScrolled ? 'bg-black/90 backdrop-blur-md border-b border-blue-500/20' : 'bg-transparent'}`}>
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between h-16">
-            {/* Logo - Updated to use p.png */}
             <div className="flex items-center space-x-2 group cursor-pointer transition-all duration-300 hover:scale-105 hover:drop-shadow-glow">
               <img
-                src="/p.png" // Path to your logo in the public folder
+                src="/p.png"
                 alt="PixelNode Logo"
                 className="h-8 w-8 rounded-lg object-contain transition-transform duration-300 group-hover:scale-110 group-hover:shadow-lg group-hover:shadow-blue-500/50"
               />
@@ -239,8 +224,6 @@ function App() {
                 PixelNode
               </span>
             </div>
-
-            {/* Desktop Navigation */}
             <nav className="hidden md:flex items-center space-x-8">
               {['About', 'Services', 'Process', 'Reviews', 'FAQ', 'Contact'].map((item) => (
                 <a
@@ -253,8 +236,6 @@ function App() {
                 </a>
               ))}
             </nav>
-
-            {/* Mobile Menu Button */}
             <button
               onClick={toggleMenu}
               className="md:hidden p-2 text-gray-300 hover:text-white hover:drop-shadow-glow hover:scale-110 transition-all duration-300"
@@ -262,8 +243,6 @@ function App() {
               {isMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
             </button>
           </div>
-
-          {/* Mobile Navigation */}
           {isMenuOpen && (
             <div className="md:hidden absolute top-16 left-0 right-0 bg-black/95 backdrop-blur-md border-b border-blue-500/20 animate-slide-down">
               <nav className="flex flex-col space-y-4 p-6">
@@ -285,14 +264,12 @@ function App() {
 
       {/* Hero Section */}
       <section className="relative z-10 min-h-screen flex items-center justify-center px-4 sm:px-6 lg:px-8">
-        {/* Floating decorative elements */}
         <div className="absolute inset-0 pointer-events-none">
           <Sparkles className="absolute top-1/4 left-1/4 w-6 h-6 text-blue-400/30 animate-twinkle" />
           <Zap className="absolute top-1/3 right-1/3 w-8 h-8 text-purple-400/30 animate-float-slow" />
           <Code className="absolute bottom-1/3 left-1/5 w-5 h-5 text-cyan-400/30 animate-bounce-slow" />
           <Layers className="absolute top-1/2 right-1/4 w-7 h-7 text-blue-300/30 animate-pulse-slow" />
         </div>
-
         <div className="text-center max-w-4xl mx-auto">
           <h1 className="text-4xl sm:text-6xl lg:text-7xl font-bold mb-6 animate-stagger-up">
             <span className="inline-block bg-gradient-to-r from-white via-blue-200 to-blue-400 bg-clip-text text-transparent hover:drop-shadow-glow transition-all duration-300 animate-text-shimmer">
@@ -303,25 +280,25 @@ function App() {
               Futures
             </span>
           </h1>
-
           <p className="text-xl sm:text-2xl text-gray-300 mb-12 animate-fade-in-up animation-delay-500 leading-relaxed hover:text-gray-200 transition-colors duration-300">
             We transform innovative ideas into powerful digital solutions that drive growth and create lasting impact.
           </p>
-
           <div className="flex flex-col sm:flex-row gap-6 justify-center animate-fade-in-up animation-delay-800">
-            <button className="group relative px-8 py-4 bg-gradient-to-r from-blue-600 to-blue-700 rounded-lg font-semibold text-lg transition-all duration-300 hover:scale-110 hover:shadow-2xl hover:shadow-blue-500/70 hover:drop-shadow-intense-glow overflow-hidden animate-pulse-button">
-              <span className="relative z-10 group-hover:scale-110 group-hover:text-white transition-all duration-300">Get Started Now</span>
-              <div className="absolute inset-0 bg-gradient-to-r from-blue-400 to-cyan-500 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-              <div className="absolute -inset-1 bg-gradient-to-r from-blue-600 to-cyan-600 rounded-lg blur opacity-0 group-hover:opacity-75 transition-opacity duration-300"></div>
-              <ArrowRight className="inline-block ml-2 w-5 h-5 group-hover:translate-x-2 group-hover:animate-bounce transition-all duration-300" />
-            </button>
-
-            <button className="group relative px-8 py-4 border-2 border-blue-500 rounded-lg font-semibold text-lg transition-all duration-300 hover:bg-blue-500/20 hover:scale-110 hover:shadow-lg hover:shadow-blue-500/50 hover:drop-shadow-glow overflow-hidden">
-              <span className="relative z-10 group-hover:scale-110 group-hover:text-blue-300 transition-all duration-300">Explore Solutions</span>
-              <div className="absolute inset-0 bg-gradient-to-r from-blue-500/10 to-purple-500/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-            </button>
+            <a href="/your-redirect-page">
+              <button className="group relative px-8 py-4 bg-gradient-to-r from-blue-600 to-blue-700 rounded-lg font-semibold text-lg transition-all duration-300 hover:scale-110 hover:shadow-2xl hover:shadow-blue-500/70 hover:drop-shadow-intense-glow overflow-hidden animate-pulse-button">
+                <span className="relative z-10 group-hover:scale-110 group-hover:text-white transition-all duration-300">Get Started Now</span>
+                <div className="absolute inset-0 bg-gradient-to-r from-blue-400 to-cyan-500 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                <div className="absolute -inset-1 bg-gradient-to-r from-blue-600 to-cyan-600 rounded-lg blur opacity-0 group-hover:opacity-75 transition-opacity duration-300"></div>
+                <ArrowRight className="inline-block ml-2 w-5 h-5 group-hover:translate-x-2 group-hover:animate-bounce transition-all duration-300" />
+              </button>
+            </a>
+            <a href="/contact">
+              <button className="group relative px-8 py-4 border-2 border-blue-500 rounded-lg font-semibold text-lg transition-all duration-300 hover:bg-blue-500/20 hover:scale-110 hover:shadow-lg hover:shadow-blue-500/50 hover:drop-shadow-glow overflow-hidden">
+                <span className="relative z-10 group-hover:scale-110 group-hover:text-blue-300 transition-all duration-300">Book a Free Call</span>
+                <div className="absolute inset-0 bg-gradient-to-r from-blue-500/10 to-purple-500/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+              </button>
+            </a>
           </div>
-
           <div className="mt-16 animate-bounce-glow cursor-pointer group">
             <ChevronDown className="w-10 h-10 mx-auto text-blue-400 group-hover:text-cyan-300 transition-all duration-300 group-hover:scale-150 group-hover:drop-shadow-intense-glow animate-pulse-slow" />
             <p className="text-sm text-gray-400 mt-2 group-hover:text-gray-300 transition-colors duration-300">Scroll down</p>
@@ -340,7 +317,6 @@ function App() {
               We are a team of passionate innovators, designers, and developers who believe in the power of technology to transform businesses and create meaningful experiences.
             </p>
           </div>
-
           <div className="grid md:grid-cols-2 gap-12 items-center">
             <div className="space-y-6">
               <h3 className="text-2xl font-semibold text-blue-400 hover:text-cyan-400 hover:drop-shadow-glow transition-all duration-300">Our Mission</h3>
@@ -360,10 +336,9 @@ function App() {
                 <span className="text-gray-300">Cutting-edge technology</span>
               </div>
             </div>
-
             <div className="grid grid-cols-2 gap-6">
               <div className="text-center p-6 bg-gradient-to-br from-blue-900/20 to-purple-900/20 rounded-lg border border-blue-500/20 hover:border-blue-400/50 hover:shadow-lg hover:shadow-blue-500/20 hover:scale-105 transition-all duration-300 group">
-                <div className="text-3xl font-bold text-blue-400 mb-2 group-hover:text-cyan-400 group-hover:animate-pulse">30+</div> {/* Changed from 150+ */}
+                <div className="text-3xl font-bold text-blue-400 mb-2 group-hover:text-cyan-400 group-hover:animate-pulse">30+</div>
                 <div className="text-gray-300">Projects Completed</div>
               </div>
               <div className="text-center p-6 bg-gradient-to-br from-purple-900/20 to-pink-900/20 rounded-lg border border-purple-500/20 hover:border-purple-400/50 hover:shadow-lg hover:shadow-purple-500/20 hover:scale-105 transition-all duration-300 group">
@@ -371,7 +346,7 @@ function App() {
                 <div className="text-gray-300">Client Satisfaction</div>
               </div>
               <div className="text-center p-6 bg-gradient-to-br from-green-900/20 to-blue-900/20 rounded-lg border border-green-500/20 hover:border-green-400/50 hover:shadow-lg hover:shadow-green-500/20 hover:scale-105 transition-all duration-300 group">
-                <div className="text-3xl font-bold text-green-400 mb-2 group-hover:text-emerald-400 group-hover:animate-pulse">2-3</div> {/* Changed from 5 */}
+                <div className="text-3xl font-bold text-green-400 mb-2 group-hover:text-emerald-400 group-hover:animate-pulse">2-3</div>
                 <div className="text-gray-300">Years Experience</div>
               </div>
               <div className="text-center p-6 bg-gradient-to-br from-pink-900/20 to-red-900/20 rounded-lg border border-pink-500/20 hover:border-pink-400/50 hover:shadow-lg hover:shadow-pink-500/20 hover:scale-105 transition-all duration-300 group">
@@ -394,7 +369,6 @@ function App() {
               We offer comprehensive digital solutions tailored to your unique business needs.
             </p>
           </div>
-
           <div className="grid md:grid-cols-3 gap-8">
             {services.map((service, index) => (
               <div
@@ -429,7 +403,6 @@ function App() {
               A proven methodology that ensures exceptional results every time.
             </p>
           </div>
-
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
             {processSteps.map((step, index) => (
               <div
@@ -467,7 +440,6 @@ function App() {
               Hear what our clients say about working with PixelNode.
             </p>
           </div>
-
           <div className="grid md:grid-cols-3 gap-8">
             {reviews.map((review, index) => (
               <div
@@ -487,7 +459,6 @@ function App() {
                   <h4 className="font-semibold text-white group-hover:text-cyan-300 group-hover:drop-shadow-glow transition-all duration-300">
                     {review.name}
                   </h4>
-                  {/* Company name removed */}
                 </div>
               </div>
             ))}
@@ -506,7 +477,6 @@ function App() {
               Get answers to common questions about our services and process.
             </p>
           </div>
-
           <div className="space-y-6">
             {faqs.map((faq, index) => (
               <div
@@ -531,9 +501,7 @@ function App() {
 
       {/* Call to Action Section */}
       <section className="relative z-10 py-20 px-4 sm:px-6 lg:px-8">
-        {/* Enhanced background for CTA */}
         <div className="absolute inset-0 bg-gradient-to-r from-blue-900/10 via-purple-900/10 to-pink-900/10 animate-gradient-shift"></div>
-
         <div className="container mx-auto max-w-4xl text-center">
           <h2 className="text-4xl sm:text-5xl font-bold mb-6 bg-gradient-to-r from-blue-300 via-purple-300 to-pink-300 bg-clip-text text-transparent animate-text-shimmer hover:drop-shadow-intense-glow transition-all duration-300">
             Curious about what we can create together?
@@ -541,12 +509,14 @@ function App() {
           <p className="text-xl text-gray-300 mb-12 leading-relaxed">
             Let's discuss your project and explore how PixelNode can help bring your digital vision to life.
           </p>
-          <button className="group relative px-12 py-6 bg-gradient-to-r from-blue-600 to-purple-600 rounded-xl font-bold text-xl transition-all duration-500 hover:scale-125 hover:shadow-2xl hover:shadow-blue-500/70 hover:drop-shadow-mega-glow overflow-hidden animate-pulse-button">
-            <span className="relative z-10 group-hover:scale-110 group-hover:text-white transition-all duration-300">Book a Free Call</span>
-            <div className="absolute inset-0 bg-gradient-to-r from-cyan-500 to-pink-500 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-            <div className="absolute -inset-2 bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600 rounded-xl blur-lg opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-            <Phone className="inline-block ml-3 w-6 h-6 group-hover:animate-bounce group-hover:text-white" />
-          </button>
+          <a href="/contact">
+            <button className="group relative px-12 py-6 bg-gradient-to-r from-blue-600 to-purple-600 rounded-xl font-bold text-xl transition-all duration-500 hover:scale-125 hover:shadow-2xl hover:shadow-blue-500/70 hover:drop-shadow-mega-glow overflow-hidden animate-pulse-button">
+              <span className="relative z-10 group-hover:scale-110 group-hover:text-white transition-all duration-300">Book a Free Call</span>
+              <div className="absolute inset-0 bg-gradient-to-r from-cyan-500 to-pink-500 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+              <div className="absolute -inset-2 bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600 rounded-xl blur-lg opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+              <Phone className="inline-block ml-3 w-6 h-6 group-hover:animate-bounce group-hover:text-white" />
+            </button>
+          </a>
         </div>
       </section>
 
@@ -556,9 +526,8 @@ function App() {
           <div className="grid md:grid-cols-4 gap-8 mb-12">
             <div className="md:col-span-2">
               <div className="flex items-center space-x-2 mb-6">
-                {/* Logo - Updated to use p.png */}
                 <img
-                  src="/p.png" // Path to your logo in the public folder
+                  src="/p.png"
                   alt="PixelNode Logo"
                   className="h-10 w-10 rounded-lg object-contain transition-transform duration-300 hover:scale-110 hover:shadow-lg hover:shadow-blue-500/50"
                 />
@@ -581,7 +550,6 @@ function App() {
                 ))}
               </div>
             </div>
-
             <div>
               <h4 className="text-lg font-semibold mb-6 text-white hover:text-blue-300 hover:drop-shadow-glow transition-all duration-300">Contact Info</h4>
               <div className="space-y-4">
@@ -589,37 +557,8 @@ function App() {
                   <Mail className="w-5 h-5 text-blue-400 group-hover:text-cyan-400 group-hover:animate-bounce" />
                   <span>pixelnodeofficial@gmail.com</span>
                 </div>
-                <div className="flex items-center space-x-3 text-gray-300 hover:text-gray-200 hover:translate-x-2 transition-all duration-300 group">
-                  <Phone className="w-5 h-5 text-blue-400 group-hover:text-cyan-400 group-hover:animate-bounce" />
-                  <span>+91 9942498114</span>
-                </div>
-                <div className="flex items-center space-x-3 text-gray-300 hover:text-gray-200 hover:translate-x-2 transition-all duration-300 group">
-                  <MapPin className="w-5 h-5 text-blue-400 group-hover:text-cyan-400 group-hover:animate-bounce" />
-                  <span>Patna, Bihar, India</span>
-                </div>
               </div>
             </div>
-            
-            <div>
-              <h4 className="text-lg font-semibold mb-6 text-white hover:text-blue-300 hover:drop-shadow-glow transition-all duration-300">Quick Links</h4>
-              <nav className="space-y-3">
-                {['About', 'Services', 'Process', 'Reviews', 'FAQ'].map((link) => (
-                  <a
-                    key={link}
-                    href={`#${link.toLowerCase()}`}
-                    className="block text-gray-300 hover:text-white hover:underline hover:drop-shadow-glow transition-all duration-300"
-                  >
-                    {link}
-                  </a>
-                ))}
-              </nav>
-            </div>
-          </div>
-          
-          <div className="border-t border-gray-700/50 pt-8 mt-12 text-center">
-            <p className="text-gray-400 text-sm">
-              &copy; {new Date().getFullYear()} PixelNode. All rights reserved.
-            </p>
           </div>
         </div>
       </footer>
