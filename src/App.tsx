@@ -377,7 +377,7 @@ function App() {
 
       {/* Conditionally render ProductsPage or main content */}
       {showProductsPage ? (
-        <ProductsPage onClose={() => setShowProductsPage(false)} onEnquireNowClick={() => setShowContactModal(true)} />
+        <ProductsPage onClose={() => setShowProductsPage(false)} /* onEnquireNowClick prop removed */ />
       ) : (
         <>
           {/* Hero Section */}
@@ -634,7 +634,7 @@ function App() {
                 className="group relative px-12 py-6 bg-gradient-to-r from-blue-600 to-purple-600 rounded-xl font-bold text-xl transition-all duration-500 hover:scale-125 hover:shadow-2xl hover:shadow-blue-500/70 hover:drop-shadow-mega-glow overflow-hidden animate-pulse-button"
               >
                 <span className="relative z-10 group-hover:scale-110 group-hover:text-white transition-all duration-300">Book a Free Call</span>
-                <div className="absolute inset-0 bg-gradient-to-r from-cyan-500 to-pink-500 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                <div className="absolute inset-0 bg-gradient-to-r from-cyan-500 to-pink-500 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
                 <div className="absolute -inset-2 bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600 rounded-xl blur-lg opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
                 <Phone className="inline-block ml-3 w-6 h-6 group-hover:animate-bounce group-hover:text-white" />
               </button>
@@ -697,7 +697,7 @@ function App() {
 export default App;
 
 // ProductsPage Component
-function ProductsPage({ onClose, onEnquireNowClick }) { // Added onEnquireNowClick prop
+function ProductsPage({ onClose /* onEnquireNowClick prop removed */ }) {
   const products = [
     {
       type: "single", // Type to distinguish single product from tiered packages
@@ -889,7 +889,7 @@ function ProductsPage({ onClose, onEnquireNowClick }) { // Added onEnquireNowCli
               )}
 
               <button
-                onClick={onEnquireNowClick} // Calls the prop to open the modal
+                // onClick={onEnquireNowClick} // Removed onClick handler
                 className="mt-6 group relative px-5 py-2.5 bg-gradient-to-r from-green-600 to-emerald-700 rounded-lg font-semibold text-base transition-all duration-300 hover:scale-105 hover:shadow-xl hover:shadow-green-500/70 hover:drop-shadow-intense-glow overflow-hidden"
               >
                 <span className="relative z-10 group-hover:text-white transition-all duration-300">Enquire Now</span>
