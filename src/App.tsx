@@ -248,11 +248,11 @@ function App() {
     }
     @keyframes fade-in-left {
       0% { opacity: 0; transform: translateX(-20px); }
-      100% { opacity: 1; transform: translateX(0); }
+      100% { transform: translateX(0); }
     }
     @keyframes fade-in-right {
       0% { opacity: 0; transform: translateX(20px); }
-      100% { opacity: 1; transform: translateX(0); }
+      100% { transform: translateX(0); }
     }
     @keyframes twinkle {
       0%, 100% { opacity: 0.3; transform: scale(1); }
@@ -377,7 +377,7 @@ function App() {
 
       {/* Conditionally render ProductsPage or main content */}
       {showProductsPage ? (
-        <ProductsPage onClose={() => setShowProductsPage(false)} /* onEnquireNowClick prop removed */ />
+        <ProductsPage onClose={() => setShowProductsPage(false)} onEnquireNowClick={handleBookCallClick} />
       ) : (
         <>
           {/* Hero Section */}
@@ -416,7 +416,7 @@ function App() {
                   className="group relative px-8 py-4 border-2 border-blue-500 rounded-lg font-semibold text-lg transition-all duration-300 hover:bg-blue-500/20 hover:scale-110 hover:shadow-lg hover:shadow-blue-500/50 hover:drop-shadow-glow overflow-hidden"
                 >
                   <span className="relative z-10 group-hover:scale-110 group-hover:text-blue-300 transition-all duration-300">Book a Free Call</span>
-                  <div className="absolute inset-0 bg-gradient-to-r from-blue-500/10 to-purple-500/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                  <div className="absolute inset-0 bg-gradient-to-r from-blue-500/10 to-purple-500/10 opacity: 0 group-hover:opacity-100 transition-opacity duration-300"></div>
                 </button>
               </div>
               <div className="mt-16 animate-bounce-glow cursor-pointer group">
@@ -498,7 +498,7 @@ function App() {
                   >
                     <div className="mb-6 relative">
                       <service.icon className="w-12 h-12 text-blue-400 group-hover:text-cyan-300 group-hover:scale-125 group-hover:rotate-12 group-hover:animate-bounce transition-all duration-500" />
-                      <div className="absolute inset-0 bg-blue-500/30 rounded-full blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                      <div className="absolute inset-0 bg-blue-500/30 rounded-full blur-xl opacity: 0 group-hover:opacity-100 transition-opacity duration-500"></div>
                     </div>
                     <h3 className="text-xl font-semibold mb-4 text-white group-hover:text-cyan-300 group-hover:drop-shadow-glow transition-all duration-300">
                       {service.title}
@@ -535,7 +535,7 @@ function App() {
                     </div>
                     <div className="mb-4 relative">
                       <step.icon className="w-10 h-10 text-blue-400 group-hover:text-cyan-300 group-hover:scale-125 group-hover:animate-bounce transition-all duration-500" />
-                      <div className="absolute inset-0 bg-blue-500/30 rounded-full blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                      <div className="absolute inset-0 bg-blue-500/30 rounded-full blur-xl opacity: 0 group-hover:opacity-100 transition-opacity duration-500"></div>
                     </div>
                     <h3 className="text-lg font-semibold mb-3 text-white group-hover:text-cyan-300 group-hover:drop-shadow-glow transition-all duration-300">
                       {step.title}
@@ -634,8 +634,8 @@ function App() {
                 className="group relative px-12 py-6 bg-gradient-to-r from-blue-600 to-purple-600 rounded-xl font-bold text-xl transition-all duration-500 hover:scale-125 hover:shadow-2xl hover:shadow-blue-500/70 hover:drop-shadow-mega-glow overflow-hidden animate-pulse-button"
               >
                 <span className="relative z-10 group-hover:scale-110 group-hover:text-white transition-all duration-300">Book a Free Call</span>
-                <div className="absolute inset-0 bg-gradient-to-r from-cyan-500 to-pink-500 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-                <div className="absolute -inset-2 bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600 rounded-xl blur-lg opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                <div className="absolute inset-0 bg-gradient-to-r from-cyan-500 to-pink-500 opacity: 0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                <div className="absolute -inset-2 bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600 rounded-xl blur-lg opacity: 0 group-hover:opacity: 100 transition-opacity duration-500"></div>
                 <Phone className="inline-block ml-3 w-6 h-6 group-hover:animate-bounce group-hover:text-white" />
               </button>
             </div>
@@ -697,7 +697,7 @@ function App() {
 export default App;
 
 // ProductsPage Component
-function ProductsPage({ onClose /* onEnquireNowClick prop removed */ }) {
+function ProductsPage({ onClose, onEnquireNowClick }) { // Added onEnquireNowClick prop
   const products = [
     {
       type: "single", // Type to distinguish single product from tiered packages
@@ -844,7 +844,7 @@ function ProductsPage({ onClose /* onEnquireNowClick prop removed */ }) {
               )}
               <div className="mb-4 relative"> {/* Reduced mb-6 to mb-4 */}
                 <product.icon className="w-14 h-14 text-blue-400 group-hover:text-cyan-300 group-hover:scale-125 group-hover:rotate-6 group-hover:animate-bounce transition-all duration-500" /> {/* Slightly reduced icon size */}
-                <div className="absolute inset-0 bg-blue-500/30 rounded-full blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                <div className="absolute inset-0 bg-blue-500/30 rounded-full blur-xl opacity: 0 group-hover:opacity-100 transition-opacity duration-500"></div>
               </div>
               <h3 className="text-xl font-semibold mb-3 text-white group-hover:text-cyan-300 group-hover:drop-shadow-glow transition-all duration-300"> {/* Reduced text-2xl to text-xl, mb-4 to mb-3 */}
                 {product.title}
@@ -889,11 +889,11 @@ function ProductsPage({ onClose /* onEnquireNowClick prop removed */ }) {
               )}
 
               <button
-                // onClick={onEnquireNowClick} // Removed onClick handler
+                onClick={onEnquireNowClick} // Re-enabled onClick handler
                 className="mt-6 group relative px-5 py-2.5 bg-gradient-to-r from-green-600 to-emerald-700 rounded-lg font-semibold text-base transition-all duration-300 hover:scale-105 hover:shadow-xl hover:shadow-green-500/70 hover:drop-shadow-intense-glow overflow-hidden"
               >
                 <span className="relative z-10 group-hover:text-white transition-all duration-300">Enquire Now</span>
-                <div className="absolute inset-0 bg-gradient-to-r from-green-400 to-lime-500 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                <div className="absolute inset-0 bg-gradient-to-r from-green-400 to-lime-500 opacity: 0 group-hover:opacity-100 transition-opacity duration-300"></div>
               </button>
             </div>
           ))}
@@ -995,7 +995,7 @@ function ContactFormModal({ onClose }) {
             className="w-full group relative px-8 py-4 bg-gradient-to-r from-blue-600 to-purple-600 rounded-lg font-bold text-lg transition-all duration-300 hover:scale-105 hover:shadow-xl hover:shadow-blue-500/70 hover:drop-shadow-intense-glow overflow-hidden"
           >
             <span className="relative z-10 group-hover:text-white transition-all duration-300">Send Inquiry</span>
-            <div className="absolute inset-0 bg-gradient-to-r from-cyan-500 to-pink-500 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+            <div className="absolute inset-0 bg-gradient-to-r from-cyan-500 to-pink-500 opacity: 0 group-hover:opacity-100 transition-opacity duration-300"></div>
           </button>
         </form>
       </div>
