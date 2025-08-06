@@ -697,7 +697,7 @@ function App() {
 export default App;
 
 // ProductsPage Component
-function ProductsPage({ onClose, onEnquireNowClick }) { // Added onEnquireNowClick prop
+function ProductsPage({ onClose }) { // Removed onEnquireNowClick prop
   const products = [
     {
       type: "single", // Type to distinguish single product from tiered packages
@@ -888,13 +888,7 @@ function ProductsPage({ onClose, onEnquireNowClick }) { // Added onEnquireNowCli
                 </div>
               )}
 
-              <button
-                onClick={onEnquireNowClick} // Re-enabled onClick handler
-                className="mt-6 group relative px-5 py-2.5 bg-gradient-to-r from-green-600 to-emerald-700 rounded-lg font-semibold text-base transition-all duration-300 hover:scale-105 hover:shadow-xl hover:shadow-green-500/70 hover:drop-shadow-intense-glow overflow-hidden"
-              >
-                <span className="relative z-10 group-hover:text-white transition-all duration-300">Enquire Now</span>
-                <div className="absolute inset-0 bg-gradient-to-r from-green-400 to-lime-500 opacity: 0 group-hover:opacity-100 transition-opacity duration-300"></div>
-              </button>
+              {/* Removed "Enquire Now" button */}
             </div>
           ))}
         </div>
