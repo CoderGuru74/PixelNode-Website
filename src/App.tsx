@@ -535,7 +535,7 @@ function App() {
                     </div>
                     <div className="mb-4 relative">
                       <step.icon className="w-10 h-10 text-blue-400 group-hover:text-cyan-300 group-hover:scale-125 group-hover:animate-bounce transition-all duration-500" />
-                      <div className="absolute inset-0 bg-blue-500/30 rounded-full blur-xl opacity: 0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                      <div className="absolute inset-0 bg-blue-500/30 rounded-full blur-xl opacity: 0 group-hover:opacity: 100 transition-opacity duration-500"></div>
                     </div>
                     <h3 className="text-lg font-semibold mb-3 text-white group-hover:text-cyan-300 group-hover:drop-shadow-glow transition-all duration-300">
                       {step.title}
@@ -697,7 +697,7 @@ function App() {
 export default App;
 
 // ProductsPage Component
-function ProductsPage({ onClose }) { // Removed onEnquireNowClick prop
+function ProductsPage({ onClose, onEnquireNowClick }) { // Added onEnquireNowClick prop
   const products = [
     {
       type: "single", // Type to distinguish single product from tiered packages
@@ -888,7 +888,13 @@ function ProductsPage({ onClose }) { // Removed onEnquireNowClick prop
                 </div>
               )}
 
-              {/* Removed "Enquire Now" button */}
+              <button
+                onClick={onEnquireNowClick} // Re-enabled onClick handler
+                className="mt-6 group relative px-5 py-2.5 bg-gradient-to-r from-green-600 to-emerald-700 rounded-lg font-semibold text-base transition-all duration-300 hover:scale-105 hover:shadow-xl hover:shadow-green-500/70 hover:drop-shadow-intense-glow overflow-hidden"
+              >
+                <span className="relative z-10 group-hover:text-white transition-all duration-300">Enquire Now</span>
+                <div className="absolute inset-0 bg-gradient-to-r from-green-400 to-lime-500 opacity: 0 group-hover:opacity-100 transition-opacity duration-300"></div>
+              </button>
             </div>
           ))}
         </div>
