@@ -30,6 +30,7 @@ import {
   Monitor, // Icon for e-commerce website
   TrendingUp // New icon for trending banner
 } from 'lucide-react';
+import ContactModal from './ContactModal'; // Import the new ContactModal component
 
 function App() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -467,7 +468,7 @@ function App() {
                   </div>
                   <div className="text-center p-6 bg-gradient-to-br from-green-900/20 to-blue-900/20 rounded-lg border border-green-500/20 hover:border-green-400/50 hover:shadow-lg hover:shadow-green-500/20 hover:scale-105 transition-all duration-300 group">
                     <div className="text-3xl font-bold text-green-400 mb-2 group-hover:text-emerald-400 group-hover:animate-pulse">2-3</div>
-                    <div className="text-3xl">Years Experience</div>
+                    <div className="text-gray-300">Years Experience</div>
                   </div>
                   <div className="text-center p-6 bg-gradient-to-br from-pink-900/20 to-red-900/20 rounded-lg border border-pink-500/20 hover:border-pink-400/50 hover:shadow-lg hover:shadow-pink-500/20 hover:scale-105 transition-all duration-300 group">
                     <div className="text-3xl font-bold text-pink-400 mb-2 group-hover:text-rose-400 group-hover:animate-pulse">24/7</div>
@@ -608,9 +609,9 @@ function App() {
                       <h3 className="text-lg font-semibold text-white group-hover:text-cyan-300 group-hover:drop-shadow-glow transition-all duration-300">
                         {faq.question}
                       </h3>
-                      <ChevronRight className="w-5 h-5 text-blue-400 group-hover:rotate-90 group-hover:text-cyan-300 group-hover:scale-125 transition-all duration-300" />
+                      <ChevronRight className="w-5 h-5 text-blue-400 group-hover:text-cyan-300 transition-transform duration-300 transform group-hover:rotate-90" />
                     </div>
-                    <p className="text-gray-300 leading-relaxed group-hover:text-gray-100 transition-colors duration-300">
+                    <p className="text-gray-400 text-sm leading-relaxed max-h-0 overflow-hidden group-hover:max-h-96 group-hover:pt-4 transition-all duration-500 ease-in-out">
                       {faq.answer}
                     </p>
                   </div>
@@ -619,386 +620,58 @@ function App() {
             </div>
           </section>
 
-          {/* Call to Action Section */}
-          <section className="relative z-10 py-20 px-4 sm:px-6 lg:px-8">
-            <div className="absolute inset-0 bg-gradient-to-r from-blue-900/10 via-purple-900/10 to-pink-900/10 animate-gradient-shift"></div>
-            <div className="container mx-auto max-w-4xl text-center">
-              <h2 className="text-4xl sm:text-5xl font-bold mb-6 bg-gradient-to-r from-blue-300 via-purple-300 to-pink-300 bg-clip-text text-transparent animate-text-shimmer hover:drop-shadow-intense-glow transition-all duration-300">
-                Curious about what we can create together?
-              </h2>
-              <p className="text-xl text-gray-300 mb-12 leading-relaxed">
-                Let's discuss your project and explore how PixelNode can help bring your digital vision to life.
-              </p>
-              <button
-                onClick={handleBookCallClick}
-                className="group relative px-12 py-6 bg-gradient-to-r from-blue-600 to-purple-600 rounded-xl font-bold text-xl transition-all duration-500 hover:scale-125 hover:shadow-2xl hover:shadow-blue-500/70 hover:drop-shadow-mega-glow overflow-hidden animate-pulse-button"
-              >
-                <span className="relative z-10 group-hover:scale-110 group-hover:text-white transition-all duration-300">Book a Free Call</span>
-                <div className="absolute inset-0 bg-gradient-to-r from-cyan-500 to-pink-500 opacity: 0 group-hover:opacity-100 transition-opacity duration-300"></div>
-                <div className="absolute -inset-2 bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600 rounded-xl blur-lg opacity: 0 group-hover:opacity: 100 transition-opacity duration-500"></div>
-                <Phone className="inline-block ml-3 w-6 h-6 group-hover:animate-bounce group-hover:text-white" />
-              </button>
-            </div>
-          </section>
-
-          {/* Footer */}
-          <footer id="contact" className="relative z-10 py-16 px-4 sm:px-6 lg:px-8 bg-gradient-to-t from-gray-900/50 to-transparent">
+          {/* Contact Section */}
+          <section id="contact" className="relative z-10 py-20 px-4 sm:px-6 lg:px-8">
             <div className="container mx-auto max-w-6xl">
-              <div className="grid md:grid-cols-4 gap-8 mb-12">
-                <div className="md:col-span-2">
-                  <div className="flex items-center space-x-2 mb-6">
-                    <img
-                      src="/p.png" // Updated image path
-                      alt="PixelNode Logo"
-                      className="h-10 w-10 rounded-lg object-contain transition-transform duration-300 hover:scale-110 hover:shadow-lg hover:shadow-blue-500/50"
-                    />
-                    <span className="text-2xl font-bold bg-gradient-to-r from-white to-blue-300 bg-clip-text text-transparent hover:drop-shadow-glow transition-all duration-300">
-                      PixelNode
-                    </span>
-                  </div>
-                  <p className="text-gray-300 mb-6 leading-relaxed">
-                    Transforming innovative ideas into powerful digital solutions that drive growth and create lasting impact.
-                  </p>
-                  <div className="flex space-x-4">
-                    {[Facebook, Twitter, Instagram, Linkedin, Github].map((Icon, index) => (
-                      <a
-                        key={index}
-                        href="#"
-                        className="group p-3 bg-gray-800/50 rounded-lg border border-gray-700/50 transition-all duration-300 hover:bg-blue-500/30 hover:border-blue-500/70 hover:scale-125 hover:shadow-lg hover:shadow-blue-500/50 hover:drop-shadow-glow"
-                      >
-                        <Icon className="w-5 h-5 text-gray-400 group-hover:text-cyan-300 group-hover:animate-pulse transition-all duration-300" />
-                      </a>
-                    ))}
-                  </div>
+              <div className="text-center mb-16">
+                <h2 className="text-4xl sm:text-5xl font-bold mb-6 bg-gradient-to-r from-white to-blue-300 bg-clip-text text-transparent hover:drop-shadow-glow transition-all duration-300 animate-text-shimmer">
+                  Get in Touch
+                </h2>
+                <p className="text-xl text-gray-300 max-w-3xl mx-auto">
+                  Ready to start your project? Let's build something amazing together.
+                </p>
+              </div>
+              <div className="grid md:grid-cols-3 gap-8">
+                <div className="group p-6 bg-gradient-to-br from-gray-900/50 to-gray-800/50 rounded-xl border border-gray-700/50 transition-all duration-500 hover:scale-105 hover:shadow-xl hover:shadow-blue-500/30 hover:border-blue-500/70 hover:drop-shadow-glow cursor-pointer text-center">
+                  <Phone className="w-10 h-10 mx-auto mb-4 text-blue-400 group-hover:text-cyan-300 transition-colors" />
+                  <h3 className="text-lg font-semibold text-white">Phone</h3>
+                  <p className="text-gray-300">+91 99999 99999</p>
                 </div>
-                <div>
-                  <h4 className="text-lg font-semibold mb-6 text-white hover:text-blue-300 hover:drop-shadow-glow transition-all duration-300">Contact Info</h4>
-                  <div className="space-y-4">
-                    <div className="flex items-center space-x-3 text-gray-300 hover:text-gray-200 hover:translate-x-2 transition-all duration-300 group">
-                      <Mail className="w-5 h-5 text-blue-400 group-hover:text-cyan-400 group-hover:animate-bounce" />
-                      <span>pixelnodeofficial@gmail.com</span>
-                    </div>
-                  </div>
+                <div className="group p-6 bg-gradient-to-br from-gray-900/50 to-gray-800/50 rounded-xl border border-gray-700/50 transition-all duration-500 hover:scale-105 hover:shadow-xl hover:shadow-blue-500/30 hover:border-blue-500/70 hover:drop-shadow-glow cursor-pointer text-center">
+                  <Mail className="w-10 h-10 mx-auto mb-4 text-blue-400 group-hover:text-cyan-300 transition-colors" />
+                  <h3 className="text-lg font-semibold text-white">Email</h3>
+                  <p className="text-gray-300">pixelnodeofficial@gmail.com</p>
+                </div>
+                <div className="group p-6 bg-gradient-to-br from-gray-900/50 to-gray-800/50 rounded-xl border border-gray-700/50 transition-all duration-500 hover:scale-105 hover:shadow-xl hover:shadow-blue-500/30 hover:border-blue-500/70 hover:drop-shadow-glow cursor-pointer text-center">
+                  <MapPin className="w-10 h-10 mx-auto mb-4 text-blue-400 group-hover:text-cyan-300 transition-colors" />
+                  <h3 className="text-lg font-semibold text-white">Location</h3>
+                  <p className="text-gray-300">Patna, Bihar, India</p>
                 </div>
               </div>
             </div>
-          </footer>
+          </section>
         </>
       )}
 
-      {/* Contact Modal */}
-      {showContactModal && (
-        <ContactFormModal onClose={() => setShowContactModal(false)} />
-      )}
+      {/* Footer */}
+      <footer className="relative z-10 py-10 px-4 sm:px-6 lg:px-8 border-t border-blue-500/20">
+        <div className="container mx-auto max-w-6xl text-center">
+          <div className="flex justify-center space-x-6 mb-6">
+            <a href="https://www.facebook.com" className="text-gray-400 hover:text-blue-500 transition-colors duration-300 hover:scale-125"><Facebook /></a>
+            <a href="https://www.twitter.com" className="text-gray-400 hover:text-cyan-500 transition-colors duration-300 hover:scale-125"><Twitter /></a>
+            <a href="https://www.instagram.com" className="text-gray-400 hover:text-purple-500 transition-colors duration-300 hover:scale-125"><Instagram /></a>
+            <a href="https://www.linkedin.com" className="text-gray-400 hover:text-blue-600 transition-colors duration-300 hover:scale-125"><Linkedin /></a>
+            <a href="https://www.github.com" className="text-gray-400 hover:text-gray-200 transition-colors duration-300 hover:scale-125"><Github /></a>
+          </div>
+          <p className="text-gray-500 text-sm">&copy; 2024 PixelNode. All rights reserved.</p>
+        </div>
+      </footer>
+      
+      {/* Contact Modal renders here */}
+      {showContactModal && <ContactModal onClose={() => setShowContactModal(false)} />}
+      
     </div>
   );
 }
 
 export default App;
-
-// ProductsPage Component
-function ProductsPage({ onClose, onEnquireNowClick }) { // Added onEnquireNowClick prop
-  const products = [
-    {
-      type: "single", // Type to distinguish single product from tiered packages
-      icon: ShoppingCart,
-      title: "Custom E-commerce App",
-      description: "A tailored mobile application for your online store, offering a seamless shopping experience for your customers.",
-      features: [
-        "Native iOS & Android development",
-        "Secure payment gateway integration",
-        "Real-time inventory management",
-        "User authentication & profiles",
-        "Push notifications"
-      ],
-      price: "₹51,000"
-    },
-    {
-      type: "tiered", // Type for tiered packages
-      icon: Monitor,
-      title: "E-commerce Website Solution",
-      packages: [
-        {
-          name: "Starter Package",
-          price: "₹15,000",
-          features: [
-            "5 Pages (Home, Products, Cart, Checkout, Contact)",
-            "Payment gateway setup",
-            "Mobile responsive design",
-            "Basic admin panel (if needed)"
-          ]
-        },
-        {
-          name: "Professional Package",
-          price: "₹35,000",
-          features: [
-            "All of the above +",
-            "Advanced product filters/search",
-            "User registration + dashboard",
-            "Coupon/discount system",
-            "Order management system"
-          ]
-        },
-        {
-          name: "Premium Custom Build",
-          price: "₹60,000 – ₹1,50,000",
-          features: [
-            "Completely custom design",
-            "Admin panel with roles",
-            "Product analytics dashboard",
-            "Integration with third-party tools",
-            "Scalable backend"
-          ]
-        }
-      ]
-    },
-    {
-      type: "tiered",
-      icon: Layers, // Using Layers for Portfolio
-      title: "Portfolio Website Development",
-      packages: [
-        {
-          name: "Basic Portfolio",
-          price: "₹2,000 to ₹6,000",
-          features: [
-            "Template-based design (HTML/CSS or WordPress)",
-            "Home, About, Contact pages",
-            "Static content",
-            "Mobile responsive",
-            "2–3 days delivery"
-          ]
-        },
-        {
-          name: "Professional Portfolio",
-          price: "₹7,000 to ₹15,000",
-          features: [
-            "Custom UI design (still based on a framework/template)",
-            "Project showcase / gallery",
-            "Contact form with backend support",
-            "Social media links / GitHub / LinkedIn",
-            "Blog section (optional)",
-            "5–7 days delivery"
-          ]
-        },
-        {
-          name: "Custom Build Portfolio",
-          price: "₹18,000 to ₹40,000+",
-          features: [
-            "Fully custom UI/UX (Figma → Code)",
-            "Dynamic blog/project CMS (Strapi, Sanity, or custom backend)",
-            "Animated sections (GSAP, Framer Motion, etc.)",
-            "Advanced SEO & performance optimization",
-            "Admin dashboard to update content",
-            "Hosting setup (Vercel/Netlify/Cloudflare Pages)",
-            "10–15 days+ delivery"
-          ]
-        }
-      ]
-    },
-    {
-      type: "single",
-      icon: Phone, // Using Phone for AI Automated Calling Agent
-      title: "AI Automated Calling Agent",
-      description: "Revolutionize your customer interactions with an intelligent AI-powered calling agent for automated support, sales, and lead generation.",
-      features: [
-        "Natural language understanding",
-        "24/7 availability",
-        "Scalable call handling",
-        "Customizable scripts",
-        "Integration with CRM systems"
-      ],
-      price: "Custom Quote",
-      isTrending: true // Flag to show trending banner
-    }
-  ];
-
-  return (
-    <section className="relative z-20 min-h-screen flex flex-col items-center justify-center px-4 sm:px-6 lg:px-8 bg-black">
-      <div className="absolute top-4 left-4 z-30">
-        <button
-          onClick={onClose}
-          className="p-3 bg-gray-800/70 rounded-full text-gray-300 hover:text-white hover:bg-blue-600/70 transition-all duration-300 hover:scale-110 hover:shadow-lg hover:shadow-blue-500/50"
-          aria-label="Back to Home"
-        >
-          <ArrowRight className="w-6 h-6 rotate-180" />
-        </button>
-      </div>
-      <div className="text-center max-w-4xl mx-auto py-20">
-        <h2 className="text-4xl sm:text-5xl font-bold mb-8 bg-gradient-to-r from-white to-blue-300 bg-clip-text text-transparent animate-text-shimmer">
-          Our Digital Solutions
-        </h2>
-        <p className="text-xl text-gray-300 mb-12 leading-relaxed">
-          Explore our specialized offerings designed to elevate your online presence and automate your business.
-        </p>
-        <div className="grid md:grid-cols-2 lg:grid-cols-2 xl:grid-cols-2 gap-10">
-          {products.map((product, index) => (
-            <div
-              key={index}
-              className="group relative p-6 bg-gradient-to-br from-gray-900/50 to-gray-800/50 rounded-xl border border-gray-700/50 transition-all duration-500 hover:scale-105 hover:shadow-2xl hover:shadow-blue-500/40 hover:border-blue-500/70 hover:drop-shadow-intense-glow cursor-pointer animate-fade-in-up"
-              style={{ animationDelay: `${index * 200}ms` }}
-            >
-              {product.isTrending && (
-                <div className="absolute top-0 right-0 -mt-3 -mr-3 bg-gradient-to-r from-pink-500 to-red-500 text-white text-xs font-bold px-3 py-1 rounded-full shadow-lg transform rotate-6 group-hover:rotate-0 transition-transform duration-300">
-                  <TrendingUp className="inline-block w-4 h-4 mr-1" /> TRENDING
-                </div>
-              )}
-              <div className="mb-4 relative"> {/* Reduced mb-6 to mb-4 */}
-                <product.icon className="w-14 h-14 text-blue-400 group-hover:text-cyan-300 group-hover:scale-125 group-hover:rotate-6 group-hover:animate-bounce transition-all duration-500" /> {/* Slightly reduced icon size */}
-                <div className="absolute inset-0 bg-blue-500/30 rounded-full blur-xl opacity: 0 group-hover:opacity-100 transition-opacity duration-500"></div>
-              </div>
-              <h3 className="text-xl font-semibold mb-3 text-white group-hover:text-cyan-300 group-hover:drop-shadow-glow transition-all duration-300"> {/* Reduced text-2xl to text-xl, mb-4 to mb-3 */}
-                {product.title}
-              </h3>
-
-              {product.type === "single" && (
-                <>
-                  <p className="text-gray-300 mb-4 leading-relaxed text-sm group-hover:text-gray-100 transition-colors duration-300"> {/* Reduced mb-6 to mb-4, added text-sm */}
-                    {product.description}
-                  </p>
-                  <ul className="text-gray-400 text-left mb-4 space-y-1 text-sm"> {/* Reduced mb-6 to mb-4, space-y-2 to space-y-1, added text-sm */}
-                    {product.features.map((feature, i) => (
-                      <li key={i} className="flex items-center">
-                        <CheckCircle className="w-4 h-4 text-green-400 mr-2 flex-shrink-0" />
-                        {feature}
-                      </li>
-                    ))}
-                  </ul>
-                  <div className="text-lg font-bold text-blue-300 mb-4"> {/* Reduced text-xl to text-lg, mb-6 to mb-4 */}
-                    {product.price}
-                  </div>
-                </>
-              )}
-
-              {product.type === "tiered" && (
-                <div className="space-y-4 mt-4"> {/* Reduced space-y-6 to space-y-4, mt-6 to mt-4 */}
-                  {product.packages.map((pkg, pkgIndex) => (
-                    <div key={pkgIndex} className="p-3 bg-gray-800/60 rounded-lg border border-gray-700/50 hover:border-blue-600/70 transition-all duration-300"> {/* Reduced p-4 to p-3 */}
-                      <h4 className="text-lg font-semibold text-blue-300 mb-1">{pkg.name}</h4> {/* Reduced text-xl to text-lg, mb-2 to mb-1 */}
-                      <p className="text-md font-bold text-purple-300 mb-2">{pkg.price}</p> {/* Reduced text-lg to text-md, mb-3 to mb-2 */}
-                      <ul className="text-gray-400 text-left space-y-0.5 text-xs"> {/* Reduced space-y-1 to space-y-0.5, text-sm to text-xs */}
-                        {pkg.features.map((feature, featureIndex) => (
-                          <li key={featureIndex} className="flex items-center">
-                            <CheckCircle className="w-3 h-3 text-green-400 mr-1 flex-shrink-0" /> {/* Reduced icon size, mr-2 to mr-1 */}
-                            {feature}
-                          </li>
-                        ))}
-                      </ul>
-                    </div>
-                  ))}
-                </div>
-              )}
-
-              <button
-                onClick={onEnquireNowClick} // Re-enabled onClick handler
-                className="mt-6 group relative px-5 py-2.5 bg-gradient-to-r from-green-600 to-emerald-700 rounded-lg font-semibold text-base transition-all duration-300 hover:scale-105 hover:shadow-xl hover:shadow-green-500/70 hover:drop-shadow-intense-glow overflow-hidden"
-              >
-                <span className="relative z-10 group-hover:text-white transition-all duration-300">Enquire Now</span>
-                <div className="absolute inset-0 bg-gradient-to-r from-green-400 to-lime-500 opacity: 0 group-hover:opacity-100 transition-opacity duration-300"></div>
-              </button>
-            </div>
-          ))}
-        </div>
-      </div>
-    </section>
-  );
-}
-
-// ContactFormModal Component
-function ContactFormModal({ onClose }) {
-  const [formData, setFormData] = useState({
-    name: '',
-    email: '',
-    message: ''
-  });
-
-  const handleChange = (e) => {
-    const { name, value } = e.target;
-    setFormData(prev => ({ ...prev, [name]: value }));
-  };
-
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    const { name, email, message } = formData;
-    const recipientEmail = "pixelnodeofficial@gmail.com";
-    const subject = encodeURIComponent(`Inquiry from ${name} via PixelNode Website`);
-    const body = encodeURIComponent(`Name: ${name}\nEmail: ${email}\n\nMessage:\n${message}`);
-
-    // Using mailto link to open user's default email client
-    window.location.href = `mailto:${recipientEmail}?subject=${subject}&body=${body}`;
-
-    // Optionally, clear the form or show a success message
-    setFormData({ name: '', email: '', message: '' });
-    onClose(); // Close the modal after submission attempt
-  };
-
-  return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/70 backdrop-blur-sm animate-modal-fade-in">
-      <div className="relative bg-gray-900 rounded-xl p-8 w-full max-w-lg border border-blue-500/30 shadow-2xl shadow-blue-900/50 animate-modal-slide-in">
-        <button
-          onClick={onClose}
-          className="absolute top-4 right-4 p-2 text-gray-400 hover:text-white hover:bg-gray-700/50 rounded-full transition-all duration-300 hover:scale-110"
-          aria-label="Close modal"
-        >
-          <X className="w-6 h-6" />
-        </button>
-        <h2 className="text-3xl font-bold mb-6 text-center bg-gradient-to-r from-white to-blue-300 bg-clip-text text-transparent">
-          Book a Free Call
-        </h2>
-        <form onSubmit={handleSubmit} className="space-y-6">
-          <div>
-            <label htmlFor="name" className="block text-gray-300 text-sm font-semibold mb-2">
-              Your Name
-            </label>
-            <input
-              type="text"
-              id="name"
-              name="name"
-              value={formData.name}
-              onChange={handleChange}
-              required
-              className="w-full p-3 rounded-lg bg-gray-800 border border-gray-700 text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-blue-500 transition-all duration-300"
-              placeholder="John Doe"
-            />
-          </div>
-          <div>
-            <label htmlFor="email" className="block text-gray-300 text-sm font-semibold mb-2">
-              Your Email
-            </label>
-            <input
-              type="email"
-              id="email"
-              name="email"
-              value={formData.email}
-              onChange={handleChange}
-              required
-              className="w-full p-3 rounded-lg bg-gray-800 border border-gray-700 text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-blue-500 transition-all duration-300"
-              placeholder="john.doe@example.com"
-            />
-          </div>
-          <div>
-            <label htmlFor="message" className="block text-gray-300 text-sm font-semibold mb-2">
-              Your Message / Project Details
-            </label>
-            <textarea
-              id="message"
-              name="message"
-              value={formData.message}
-              onChange={handleChange}
-              rows="5"
-              required
-              className="w-full p-3 rounded-lg bg-gray-800 border border-gray-700 text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-blue-500 transition-all duration-300 resize-y"
-              placeholder="Tell us about your project or inquiry..."
-            ></textarea>
-          </div>
-          <button
-            type="submit"
-            className="w-full group relative px-8 py-4 bg-gradient-to-r from-blue-600 to-purple-600 rounded-lg font-bold text-lg transition-all duration-300 hover:scale-105 hover:shadow-xl hover:shadow-blue-500/70 hover:drop-shadow-intense-glow overflow-hidden"
-          >
-            <span className="relative z-10 group-hover:text-white transition-all duration-300">Send Inquiry</span>
-            <div className="absolute inset-0 bg-gradient-to-r from-cyan-500 to-pink-500 opacity: 0 group-hover:opacity-100 transition-opacity duration-300"></div>
-          </button>
-        </form>
-      </div>
-    </div>
-  );
-}
