@@ -30,7 +30,7 @@ import {
   Monitor, // Icon for e-commerce website
   TrendingUp // New icon for trending banner
 } from 'lucide-react';
-import ContactModal from './ContactModal'; // Import the new ContactModal component
+import ContactModal from './ContactModal.jsx';
 
 function App() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
