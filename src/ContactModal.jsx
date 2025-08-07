@@ -8,14 +8,22 @@ const ContactModal = ({ onClose }) => {
   const sendEmail = (e) => {
     e.preventDefault();
 
-    emailjs.sendForm('YOUR_SERVICE_ID', 'YOUR_TEMPLATE_ID', form.current, 'YOUR_PUBLIC_KEY')
+    // Use environment variables for EmailJS keys
+    emailjs.sendForm(
+      import.meta.env.VITE_EMAILJS_SERVICE_ID,
+      import.meta.env.VITE_EMAILJS_TEMPLATE_ID,
+      form.current,
+      {
+        publicKey: import.meta.env.VITE_EMAILJS_PUBLIC_KEY,
+      }
+    )
       .then((result) => {
-          console.log(result.text);
-          alert('Message sent successfully!');
-          onClose(); // Close modal on success
+        console.log(result.text);
+        alert('Message sent successfully!');
+        onClose(); // Close modal on success
       }, (error) => {
-          console.log(error.text);
-          alert('Failed to send message. Please try again.');
+        console.log(error.text);
+        alert('Failed to send message. Please try again.');
       });
   };
 
