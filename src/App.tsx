@@ -26,19 +26,106 @@ import {
   Zap,
   Code,
   Layers,
-  ShoppingCart, // Icon for e-commerce app
-  Monitor, // Icon for e-commerce website
-  TrendingUp // New icon for trending banner
+  ShoppingCart,
+  Monitor,
+  TrendingUp,
+  ArrowLeft,
 } from 'lucide-react';
-import ContactModal from './ContactModal.jsx';
+import ContactModal from './ContactModal.jsx'; // Make sure this is the correct path
+
+// A separate component for the Products Page
+const ProductsPage = ({ onClose, onEnquireNowClick }) => {
+  const products = [
+    {
+      title: "AI Chatbot",
+      description: "An intelligent chatbot solution for customer support and engagement.",
+      price: "Starts at $500",
+      icon: MessageSquare,
+    },
+    {
+      title: "E-commerce App",
+      description: "A full-featured e-commerce application for web and mobile platforms.",
+      price: "Starts at $2000",
+      icon: ShoppingCart,
+    },
+    {
+      title: "Custom Web App",
+      description: "A bespoke web application tailored to your unique business needs.",
+      price: "Contact for Quote",
+      icon: Globe,
+    },
+    {
+      title: "Mobile App",
+      description: "A native or cross-platform mobile application for iOS and Android.",
+      price: "Starts at $1500",
+      icon: Smartphone,
+    },
+  ];
+
+  return (
+    <section className="relative z-10 min-h-screen flex flex-col justify-center items-center py-20 px-4 sm:px-6 lg:px-8">
+      <div className="container mx-auto max-w-6xl">
+        <div className="text-center mb-16">
+          <h2 className="text-4xl sm:text-5xl font-bold mb-6 bg-gradient-to-r from-white to-blue-300 bg-clip-text text-transparent animate-text-shimmer">
+            Our Products
+          </h2>
+          <p className="text-xl text-gray-300 max-w-3xl mx-auto">
+            Discover our ready-to-launch products designed to accelerate your business.
+          </p>
+        </div>
+        <div className="grid md:grid-cols-2 lg:grid-cols-2 gap-12">
+          {products.map((product, index) => (
+            <div
+              key={index}
+              className="group relative p-8 bg-gradient-to-br from-gray-900/50 to-gray-800/50 rounded-xl border border-gray-700/50 transition-all duration-500 hover:scale-105 hover:shadow-2xl hover:shadow-blue-500/40 hover:border-blue-500/70 hover:drop-shadow-intense-glow"
+              style={{ animationDelay: `${index * 150}ms` }}
+            >
+              <div className="mb-6 relative flex items-center space-x-4">
+                <div className="p-3 rounded-full bg-blue-500/20">
+                  <product.icon className="w-8 h-8 text-blue-400 group-hover:text-cyan-300 transition-colors" />
+                </div>
+                <h3 className="text-2xl font-semibold text-white group-hover:text-cyan-300 transition-colors">
+                  {product.title}
+                </h3>
+              </div>
+              <p className="text-gray-300 mb-6 leading-relaxed">
+                {product.description}
+              </p>
+              <div className="flex items-center justify-between border-t border-gray-700/50 pt-4">
+                <span className="text-xl font-bold text-white">{product.price}</span>
+                <button
+                  onClick={onEnquireNowClick}
+                  className="flex items-center px-4 py-2 bg-blue-600 rounded-lg font-semibold hover:bg-blue-700 transition-colors"
+                >
+                  Enquire Now
+                  <ArrowRight className="w-4 h-4 ml-2" />
+                </button>
+              </div>
+            </div>
+          ))}
+        </div>
+        <div className="text-center mt-12">
+          <button
+            onClick={onClose}
+            className="inline-flex items-center px-6 py-3 border-2 border-gray-700 text-gray-300 rounded-lg font-semibold hover:bg-gray-800 transition-colors"
+          >
+            <ArrowLeft className="w-5 h-5 mr-2" />
+            Back to Home
+          </button>
+        </div>
+      </div>
+    </section>
+  );
+};
+
 
 function App() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
   const [particles, setParticles] = useState([]);
-  const [showProductsPage, setShowProductsPage] = useState(false); // State for Products page
-  const [showContactModal, setShowContactModal] = useState(false); // State for Contact Modal
+  const [showProductsPage, setShowProductsPage] = useState(false);
+  const [showContactModal, setShowContactModal] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -52,7 +139,6 @@ function App() {
     window.addEventListener('scroll', handleScroll);
     window.addEventListener('mousemove', handleMouseMove);
 
-    // Initialize floating particles
     const initialParticles = Array.from({ length: 20 }, (_, i) => ({
       id: i,
       x: Math.random() * window.innerWidth,
@@ -70,20 +156,15 @@ function App() {
     };
   }, []);
 
-  // Animate particles
   useEffect(() => {
     const animateParticles = () => {
       setParticles(prev => prev.map(particle => {
         let newX = particle.x + particle.speedX;
         let newY = particle.y + particle.speedY;
-
-        // Boundary checks to wrap particles around the screen
         if (newX > window.innerWidth) newX = 0;
         else if (newX < 0) newX = window.innerWidth;
-
         if (newY > window.innerHeight) newY = 0;
         else if (newY < 0) newY = window.innerHeight;
-
         return {
           ...particle,
           x: newX,
@@ -179,114 +260,45 @@ function App() {
   };
 
   const handleGetStartedClick = (e) => {
-    e.preventDefault(); // Prevent default anchor behavior
+    e.preventDefault();
     setShowProductsPage(true);
   };
 
   const handleBookCallClick = (e) => {
-    e.preventDefault(); // Prevent default anchor behavior
+    e.preventDefault();
     setShowContactModal(true);
   };
 
-  // Inline CSS for animations
   const customStyles = `
-    @keyframes gradient-shift {
-      0% { background-position: 0% 50%; }
-      50% { background-position: 100% 50%; }
-      100% { background-position: 0% 50%; }
-    }
-    @keyframes float-slow {
-      0%, 100% { transform: translateY(0) translateX(0); }
-      25% { transform: translateY(-10px) translateX(10px); }
-      50% { transform: translateY(0) translateX(0); }
-      75% { transform: translateY(10px) translateX(-10px); }
-    }
-    @keyframes float-reverse {
-      0%, 100% { transform: translateY(0) translateX(0); }
-      25% { transform: translateY(10px) translateX(-10px); }
-      50% { transform: translateY(0) translateX(0); }
-      75% { transform: translateY(-10px) translateX(10px); }
-    }
-    @keyframes float-diagonal {
-      0%, 100% { transform: translate(0, 0); }
-      50% { transform: translate(20px, 20px); }
-    }
-    @keyframes grid-move {
-      0% { background-position: 0 0; }
-      100% { background-position: 50px 50px; }
-    }
-    @keyframes pulse-slow {
-      0%, 100% { transform: scale(1); opacity: 0.5; }
-      50% { transform: scale(1.1); opacity: 1; }
-    }
-    @keyframes pulse-slower {
-      0%, 100% { transform: scale(1); opacity: 0.5; }
-      50% { transform: scale(1.05); opacity: 0.9; }
-    }
-    @keyframes pulse-slowest {
-      0%, 100% { transform: scale(1); opacity: 0.5; }
-      50% { transform: scale(1.02); opacity: 0.8; }
-    }
-    @keyframes pulse-button {
-      0%, 100% { transform: scale(1); }
-      50% { transform: scale(1.02); }
-    }
-    @keyframes bounce-glow {
-      0%, 100% { transform: translateY(0); filter: drop-shadow(0 0 5px rgba(59, 130, 246, 0.5)); }
-      50% { transform: translateY(-10px); filter: drop-shadow(0 0 15px rgba(59, 130, 246, 0.8)); }
-    }
-    @keyframes stagger-up {
-      0% { opacity: 0; transform: translateY(20px); }
-      100% { opacity: 1; transform: translateY(0); }
-    }
-    .animate-stagger-up > * {
-      animation: stagger-up 0.8s ease-out forwards;
-      animation-delay: var(--delay);
-    }
-    @keyframes fade-in-up {
-      0% { opacity: 0; transform: translateY(20px); }
-      100% { opacity: 1; transform: translateY(0); }
-    }
-    @keyframes fade-in-left {
-      0% { opacity: 0; transform: translateX(-20px); }
-      100% { transform: translateX(0); }
-    }
-    @keyframes fade-in-right {
-      0% { opacity: 0; transform: translateX(20px); }
-      100% { transform: translateX(0); }
-    }
-    @keyframes twinkle {
-      0%, 100% { opacity: 0.3; transform: scale(1); }
-      50% { opacity: 0.8; transform: scale(1.2); }
-    }
-    @keyframes text-shimmer {
-      0% { background-position: -200% 0; }
-      100% { background-position: 200% 0; }
-    }
-    @keyframes text-glow {
-      0%, 100% { text-shadow: 0 0 5px rgba(59, 130, 246, 0.5), 0 0 10px rgba(147, 51, 234, 0.5); }
-      50% { text-shadow: 0 0 15px rgba(59, 130, 246, 0.8), 0 0 25px rgba(147, 51, 234, 0.8); }
-    }
-    @keyframes slide-down {
-      0% { transform: translateY(-100%); opacity: 0; }
-      100% { transform: translateY(0); opacity: 1; }
-    }
-    /* Modal Animations */
-    @keyframes modal-fade-in {
-      from { opacity: 0; }
-      to { opacity: 1; }
-    }
-    @keyframes modal-slide-in {
-      from { transform: translateY(-50px); opacity: 0; }
-      to { transform: translateY(0); opacity: 1; }
-    }
+    @keyframes gradient-shift { 0% { background-position: 0% 50%; } 50% { background-position: 100% 50%; } 100% { background-position: 0% 50%; } }
+    @keyframes float-slow { 0%, 100% { transform: translateY(0) translateX(0); } 25% { transform: translateY(-10px) translateX(10px); } 50% { transform: translateY(0) translateX(0); } 75% { transform: translateY(10px) translateX(-10px); } }
+    @keyframes float-reverse { 0%, 100% { transform: translateY(0) translateX(0); } 25% { transform: translateY(10px) translateX(-10px); } 50% { transform: translateY(0) translateX(0); } 75% { transform: translateY(-10px) translateX(10px); } }
+    @keyframes float-diagonal { 0%, 100% { transform: translate(0, 0); } 50% { transform: translate(20px, 20px); } }
+    @keyframes grid-move { 0% { background-position: 0 0; } 100% { background-position: 50px 50px; } }
+    @keyframes pulse-slow { 0%, 100% { transform: scale(1); opacity: 0.5; } 50% { transform: scale(1.1); opacity: 1; } }
+    @keyframes pulse-slower { 0%, 100% { transform: scale(1); opacity: 0.5; } 50% { transform: scale(1.05); opacity: 0.9; } }
+    @keyframes pulse-slowest { 0%, 100% { transform: scale(1); opacity: 0.5; } 50% { transform: scale(1.02); opacity: 0.8; } }
+    @keyframes pulse-button { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.02); } }
+    @keyframes bounce-glow { 0%, 100% { transform: translateY(0); filter: drop-shadow(0 0 5px rgba(59, 130, 246, 0.5)); } 50% { transform: translateY(-10px); filter: drop-shadow(0 0 15px rgba(59, 130, 246, 0.8)); } }
+    @keyframes stagger-up { 0% { opacity: 0; transform: translateY(20px); } 100% { opacity: 1; transform: translateY(0); } }
+    .animate-stagger-up > * { animation: stagger-up 0.8s ease-out forwards; animation-delay: var(--delay); }
+    @keyframes fade-in-up { 0% { opacity: 0; transform: translateY(20px); } 100% { opacity: 1; transform: translateY(0); } }
+    @keyframes fade-in-left { 0% { opacity: 0; transform: translateX(-20px); } 100% { transform: translateX(0); } }
+    @keyframes fade-in-right { 0% { opacity: 0; transform: translateX(20px); } 100% { transform: translateX(0); } }
+    @keyframes twinkle { 0%, 100% { opacity: 0.3; transform: scale(1); } 50% { opacity: 0.8; transform: scale(1.2); } }
+    @keyframes text-shimmer { 0% { background-position: -200% 0; } 100% { background-position: 200% 0; } }
+    @keyframes text-glow { 0%, 100% { text-shadow: 0 0 5px rgba(59, 130, 246, 0.5), 0 0 10px rgba(147, 51, 234, 0.5); } 50% { text-shadow: 0 0 15px rgba(59, 130, 246, 0.8), 0 0 25px rgba(147, 51, 234, 0.8); } }
+    @keyframes slide-down { 0% { transform: translateY(-100%); opacity: 0; } 100% { transform: translateY(0); opacity: 1; } }
+    @keyframes modal-fade-in { from { opacity: 0; } to { opacity: 1; } }
+    @keyframes modal-slide-in { from { transform: translateY(-50px); opacity: 0; } to { transform: translateY(0); opacity: 1; } }
     .animate-modal-fade-in { animation: modal-fade-in 0.3s ease-out forwards; }
     .animate-modal-slide-in { animation: modal-slide-in 0.3s ease-out forwards; }
   `;
 
   return (
     <div className="min-h-screen bg-black text-white overflow-hidden font-inter">
-      <style>{customStyles}</style> {/* Inject custom animations */}
+      <style>{customStyles}</style>
+
       {/* Advanced Animated Background */}
       <div className="fixed inset-0 z-0">
         <div className="absolute inset-0 bg-gradient-to-br from-blue-900/10 via-black to-purple-900/10 animate-gradient-shift"></div>
@@ -327,9 +339,9 @@ function App() {
       <header className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${isScrolled ? 'bg-black/90 backdrop-blur-md border-b border-blue-500/20' : 'bg-transparent'}`}>
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between h-16">
-            <div className="flex items-center space-x-2 group cursor-pointer transition-all duration-300 hover:scale-105 hover:drop-shadow-glow" onClick={() => setShowProductsPage(false)}> {/* Back to home */}
+            <div className="flex items-center space-x-2 group cursor-pointer transition-all duration-300 hover:scale-105 hover:drop-shadow-glow" onClick={() => setShowProductsPage(false)}>
               <img
-                src="/p.png" // Updated image path
+                src="/p.png"
                 alt="PixelNode Logo"
                 className="h-8 w-8 rounded-lg object-contain transition-transform duration-300 group-hover:scale-110 group-hover:shadow-lg group-hover:shadow-blue-500/50"
               />
@@ -343,7 +355,7 @@ function App() {
                   key={item}
                   href={`#${item.toLowerCase()}`}
                   className="relative text-gray-300 hover:text-white hover:drop-shadow-glow transition-all duration-300 group"
-                  onClick={() => setShowProductsPage(false)} // Hide products page when navigating
+                  onClick={() => setShowProductsPage(false)}
                 >
                   {item}
                   <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-gradient-to-r from-blue-400 to-cyan-400 shadow-glow transition-all duration-300 group-hover:w-full group-hover:shadow-blue-500/50"></span>
